@@ -1,20 +1,43 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# GX-Pulse Prototype
 
-# Run and deploy your AI Studio app
+GX-Pulse is a client-side fintech prototype built with **React**, **TypeScript**, **Vite**, **Tailwind CSS**, and **Framer Motion**.
 
-This contains everything you need to run your app locally.
+It is designed as a mobile-first personal finance dashboard that tracks savings goals, daily spending, and squad-based budgeting, using mock data only.
 
-View your app in AI Studio: https://ai.studio/apps/c5645744-ec8c-4e01-b351-5e0bf2a37b6f
+## Features
 
-## Run Locally
+- Goal savings dashboard with projected completion date
+- Daily spending plan editor with live impact analytics
+- Squad contribution and streak progress experience
+- Mobile-first UI with animated transitions
+- Fully client-side app with no external backend required
 
-**Prerequisites:**  Node.js
+## Local Setup
 
+### Prerequisites
+- Node.js 18+
+- npm
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+### Install
+
+```bash
+npm install
+```
+
+### Run locally
+
+```bash
+npm run dev
+```
+
+### Build for production
+
+```bash
+npm run build
+```
+
+## Notes
+
+- This project currently uses mock data and does not rely on external APIs.
+- Environment variables are not required for normal local development.
+- If you want to deploy it as a static web app, the output will be in `dist/` after building.

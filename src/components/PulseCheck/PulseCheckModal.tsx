@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Zap, PiggyBank, CheckCircle2 } from 'lucide-react';
 import { useApp } from '../../lib/store';

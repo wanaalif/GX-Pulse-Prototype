@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useEffect } from "react";
+import { useState, useEffect, type ChangeEvent } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import {
   Bell,
@@ -36,7 +36,7 @@ export default function Dashboard() {
   const [showPulseCheck, setShowPulseCheck] = useState(false);
   const [showReminder, setShowReminder] = useState(false);
 
-  const handleSliderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSliderChange = (e: ChangeEvent<HTMLInputElement>) => {
     const val = Number(e.target.value);
     setDailyLimit(val);
   };

@@ -3,7 +3,6 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { Home, BarChart2, Users, Settings } from 'lucide-react';
 import { AppProvider, useApp } from './lib/store';

@@ -3,22 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { Goal, SpendingCategory, Squad, UserType } from './types';
-
-export const COLORS = {
-  primary: '#4A25AA',
-  primaryDark: '#2D1580',
-  purpleLight: '#EDE7F6',
-  accentMid: '#7B52D0',
-  background: '#FFFFFF',
-  surface: '#F9FAFB',
-  textPrimary: '#1A1A2E',
-  textSecondary: '#6B7280',
-  amberNudge: '#F59E0B',
-  amberLight: '#FEF3C7',
-  danger: '#EF4444',
-  success: '#0EA5E9',
-};
+import { Goal, SpendingCategory, Squad } from './types';
 
 export const CATEGORIES: SpendingCategory[] = [
   { id: 'dining', name: 'Dining', icon: '🍴', allocatedAmount: 500, spentAmount: 242, color: '#4A25AA' },

@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useMemo } from 'react';
+import { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { ArrowLeft, RefreshCw, AlertCircle, Info, TrendingUp, CheckCircle } from 'lucide-react';
+import { ArrowLeft, AlertCircle, Info, TrendingUp, CheckCircle } from 'lucide-react';
 import { useApp } from '../../lib/store';
 import { AppState, SpendingCategory } from '../../types';
 

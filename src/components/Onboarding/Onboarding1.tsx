@@ -3,7 +3,6 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React from "react";
 import { GraduationCap, Briefcase } from "lucide-react";
 import { useApp } from "../../lib/store";
 import { AppState, UserType } from "../../types";

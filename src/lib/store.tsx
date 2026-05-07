@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
+import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 import { AppState, Goal, SpendingCategory, Squad, UserType } from '../types';
 import { INITIAL_GOAL, INITIAL_SQUAD, CATEGORIES, FINANCIAL_CONSTANTS } from '../constants';
 
@@ -64,23 +64,18 @@ interface AppContextType {
   setSquad: (squad: Squad) => void;
   dailyLimit: number;
   setDailyLimit: (limit: number) => void;
-  isCrisisMode: boolean;
-  setIsCrisisMode: (mode: boolean) => void;
   // Financial config for Demo Setup
   financialConfig: typeof FINANCIAL_CONSTANTS;
   setFinancialConfig: (config: typeof FINANCIAL_CONSTANTS) => void;
   // Computed financial values
   monthlyIncome: number;
   currentSpent: number;
-  setCurrentSpent: (spent: number) => void;
   accountBalance: number;
   monthlySavings: number;
-  monthlyExpense: number;
   recommendedDailyLimit: number;
   pulseCheckPurchaseAmount: number;
   pulseCheckOverLimit: number;
   pulseCheckDelayDays: number;
-  projectedGoalDate: string;
   projectedGoalDateValue: number | null;
   // Locking method
   lockSpendingPlan: (newCategories: SpendingCategory[], newDailyLimit: number) => void;
@@ -97,9 +92,8 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
   const [dailyLimit, setDailyLimit] = useState<number>(
     calculateDailyLimit(INITIAL_GOAL.currentAmount, INITIAL_GOAL.targetAmount, INITIAL_GOAL.targetDate, FINANCIAL_CONSTANTS.MONTHLY_INCOME)
   );
-  const [isCrisisMode, setIsCrisisMode] = useState<boolean>(false);
   const [financialConfig, setFinancialConfig] = useState(() => loadPersisted('gx_finances', FINANCIAL_CONSTANTS));
-  const [currentSpent, setCurrentSpent] = useState<number>(FINANCIAL_CONSTANTS.DEFAULT_CURRENT_SPENT);
+  const currentSpent = FINANCIAL_CONSTANTS.DEFAULT_CURRENT_SPENT;
 
   useEffect(() => {
     localStorage.setItem('gx_goal', JSON.stringify(goal));
@@ -119,8 +113,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
   // Computed values
   const monthlyIncome = FINANCIAL_CONSTANTS.MONTHLY_INCOME;
   const accountBalance = FINANCIAL_CONSTANTS.ACCOUNT_BALANCE;
-  const monthlyExpense = dailyLimit * 30;
-  const monthlySavings = monthlyIncome - monthlyExpense;
+  const monthlySavings = monthlyIncome - dailyLimit * 30;
   const pulseCheckPurchaseAmount = FINANCIAL_CONSTANTS.PULSE_CHECK_PURCHASE_AMOUNT;
   const pulseCheckOverLimit = pulseCheckPurchaseAmount - (dailyLimit - currentSpent);
   const pulseCheckDelayDays = FINANCIAL_CONSTANTS.PULSE_CHECK_DELAY_DAYS;
@@ -149,7 +142,6 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const projectedGoalDateValue = calculateProjectedGoalDateValue();
-  const projectedGoalDate = projectedGoalDateValue ? formatMonthYear(new Date(projectedGoalDateValue)) : 'TBD';
 
   const lockSpendingPlan = (newCategories: SpendingCategory[], newDailyLimit: number) => {
     setCategories(newCategories);
@@ -171,20 +163,16 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
         setSquad,
         dailyLimit,
         setDailyLimit,
-        isCrisisMode,
-        setIsCrisisMode,
-        financialConfig, setFinancialConfig,
+        financialConfig,
+        setFinancialConfig,
         monthlyIncome,
         currentSpent,
-        setCurrentSpent,
         accountBalance,
         monthlySavings,
-        monthlyExpense,
         recommendedDailyLimit,
         pulseCheckPurchaseAmount,
         pulseCheckOverLimit,
         pulseCheckDelayDays,
-        projectedGoalDate,
         projectedGoalDateValue,
         lockSpendingPlan,
       }}

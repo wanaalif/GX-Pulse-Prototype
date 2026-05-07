@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useApp } from '../../lib/store';
 import { AppState } from '../../types';
 import { INITIAL_GOAL, FINANCIAL_CONSTANTS } from '../../constants';
